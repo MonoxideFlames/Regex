@@ -12,17 +12,17 @@ eg:
 
 the above expression matches all sequences of the characters 'ab' that repeat at least once.
 
-**ab+
+**ab+**
 
 The above expression matches all sequences starting with an 'a' followed by one or more 'b' characters.
 
-**ab?
+**ab?**
 
 The above expression matches 'a' or 'ab', the 'b' is optional.
 
 another example is colou?r, which matches 'color' or 'colour'
 
-**ab\*|a\*b 
+**ab\*|a\*b**
 
 The above expression matches the sequences determined by ab\* or a\*b.
 
@@ -33,7 +33,7 @@ This is a basic regex specification, but it is extended to specify character set
 Character Set mode: This is enclosed between a '\[' and '\]'
 an example would be 
 
-**me\[t|d\]al
+**me\[t|d\]al**
 
 This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
 
