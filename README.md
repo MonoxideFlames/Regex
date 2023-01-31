@@ -20,8 +20,8 @@ eg:
 Another example is colou?r, which matches 'color' or 'colour'
 
 **ab\*|a\*b**
-    matches the sequences determined by ab\* or a\*b.
-A real world example would be me(t|d)al, which matches 'metal' or 'medal'.
+    matches the sequences determined by **ab\*** or **a\*b**.
+A real world example would be **me(t|d)al**, which matches 'metal' or 'medal'.
 
 *This is only a basic regex specification, but it is extended to specify custom character sets*
 # Character Set mode: 
