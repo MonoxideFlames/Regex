@@ -42,49 +42,72 @@ This matches 'metal' and 'medal' just like alternation, but it does it by using 
 
 Within charset mode, you can maipulate these sets using set operations.
 Operators:
+
 '~' takes a char set and returns everything not contained within it. 
 eg:
 **\[~s\]** every character in the ASCII scheme that is not an 's'.
+
 **\[~A-Z\]** every character that is not an uppercase letter.
+
 **\[~0-9\]** every character that is not a digit.
 
 **'&'** takes two charsets and returns their intersection
 eg:
+
 **\[~A-D & A-Z\]** this takes all the uppercase letters except for A,B,C,D. Since we intersect whatever isn't contained in A-D with A-Z. This effectively removes the characters {A, B, C, D} from the set of uppercase letters.
 
 **'|'** this takes 2 charsets and returns their union:
+
 eg:
+
 **\[A-Z|0-9\]** this charset contains all uppercase letters and all digits.
 
 Declaring basic charsets:
+
 there are 3 ways to declare charsets:
 
 1) The character itself.
+
 **\[a|b\]** a defines the union of the charset containing 'a', with the charset containing 'b'.
 
 2) A range of characters:
+
 **\[a-d\]** defines all the ascii characters between 'a' and 'd' inclusive. This results in {a,b,c,d}, but this might vary, given the structure of Ascii.
 
 3) Use predefined macros:
+
 **\#D** represents digits, #A represents alphabetical characters, #! represents all punctuation characters, etc.
 
 example:
+
 **\#A\[\#A|\#D\]\*** This matches a letter, followed by 0 or more characters that are either letters or numbers.
 
 A list of all the predefined character sets are shown below, these are case insensitive:
 
 **S**: {space, tab, newLine, carraige return, vertical tab, formfeed} All whitespace characters
+
 **U**: \[A-Z\]
+
 **L**: \[a-z\]
+
 **A**: \[#U|#L\]
+
 **D**: \[0-9\]
+
 **W**: \[#A|#D\]
+
 **X**: \[#D|a-f|A-F\]
+
 **P**:  \!, \", \#, \$, \%, \&, ', (, ), \*, +, -, \., \/, :, ;, ?, @, \[, \\, \], ^, \_, \`, {, |, }, ~  and the comma itself.  note that '<=>' are not present
+
 **!**: an alias for P
+
 **E**: all characters
+
 **.**: an alias for E
+
 **Z**: no characters
+
 **0**: an alias for Z
 
 Real World Examples:
@@ -94,6 +117,7 @@ Real World Examples:
 **(+1)?\#D\#D\#D-?\#D\#D\#D-?\#D\#D\#D\#D?** This matches all phone numbers with or without dashes in between groups of 3 or 4 digits, and it allows an optional US country code if provided.
 
 **(\[1-9\]|(1\[0-2\]))/(\[1-9\]|\[1|2\]#D|3\[0|1\])(/\#D?\#D?\#D\#D)?**
+
 The above regex matches all valid mm/dd/yyyy combinations with an optional year and support for 2 digit years as well. However, 2/30/2022 is still accepted even though that date isn't valid in reality.
 
 **\#W+**
