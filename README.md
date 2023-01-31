@@ -1,6 +1,6 @@
 # Regex
 
-This is a Regex Model. It has the 4 basic regex operators, along with added functionality to enhance the utility and practicality of the basic regex. Its salient aspects include a minimal use of reserved characters, whitespace insensitivity( **\\s** is how you write a space), and the ability to manipulate and declare custom character sets that make the corresponding matching process more efficient. Lastly, the regex scheme has overlap with many pre-existing regex schemes. Especially in its use of '.' as a universal character representation, and '-' to declare ranges of characters.
+This is a Regex Model. It has the 4 basic regex operators with added functionality to enhance utility and practicality. Its salient aspects include a minimal use of reserved characters, whitespace insensitivity( **\\s** is how you write a space), and the ability to manipulate and declare custom character sets that make the corresponding matching process more efficient. Lastly, the regex scheme has overlap with many pre-existing regex schemes. Especially in its use of '.' as a universal character representation, and '-' to declare ranges of characters.
 
 A proper specification of the scheme is as follows: 
 
@@ -28,15 +28,15 @@ A real world example would be **me(t|d)al**, which matches 'metal' or 'medal'.
 # Character Set mode: 
 **This is enclosed between a '\[' and '\]'**
 
-an example would be     **me\[t|d\]al**
+we used something like this before   **me\[t|d\]al**, except the () are replaced by \[\].
 
-This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
+This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful as it makes the matching process faster. It can also make the regexes more readable. For example,
 
-**\[A-Z\]**    specifies the set of uppercase letters. Without this, we'd need to use this:    **(A|B|D|E|F|G|H|I...|Z)** vs which is far too difficult to read and for the computer to evaluate.
+**\[A-Z\]**    specifies the set of uppercase letters. Without this, we'd need to use this:    **(A|B|D|E|F|G|H|I...|Z)** vs which is much more difficult to read and for the computer to evaluate.
 
-Within charset mode, you can manipulate these sets using set operations.
+Within charset mode, you can manipulate these sets using set operations. Here is a list of the operators:
 
-**'~'** takes a char set and returns everything not contained within it. 
+**'~'**    takes a char set and returns everything not contained within it. 
 eg:
 **\[~s\]**    every character in the ASCII scheme that is not an 's'.
 
@@ -44,20 +44,18 @@ eg:
 
 **\[~0-9\]**    every character that is not a digit.
 
-**'&'**    takes two charsets and returns their intersection
+**'&'**    takes two character sets and returns their intersection
 eg:
 
-**\[~A-D & A-Z\]**    this takes all the uppercase letters except for A,B,C,D. Since we intersect whatever isn't contained in A-D with A-Z. This effectively removes the characters {A, B, C, D} from the set of uppercase letters.
+**\[~A-D & A-Z\]**    takes all the uppercase letters except for A,B,C,D. Since we intersect whatever isn't contained in A-D with A-Z. This effectively removes the characters {A, B, C, D} from the set of uppercase letters.
 
-**'|'** this takes 2 charsets and returns their union:
+**'|'** takes 2 charsets and returns their union:
 
 eg:
 
-**\[A-Z|0-9\]**    this charset contains all uppercase letters and all digits.
+**\[A-Z|0-9\]**    This charset contains all uppercase letters and all digits.
 
-Declaring basic charsets:
-
-there are 3 ways to declare charsets:
+Declaring basic charsets - 3 ways:
 
 1) The character itself.
 
