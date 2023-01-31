@@ -1,6 +1,6 @@
 # Regex
 
-This is a Regex Model. It has the 4 basic regex operators, along with added functionality to enhance the utility and practicality of the basic regex. Its salient aspects include: a minimal use of reserved characters, whitespace insensitivity( **\\s** is how you write a space), and the ability to manipulate and declare custom character sets that make the corresponding matching process more efficient. Lastly, the regex scheme has overlap with many pre-existing regex schemes. Especially in its use of '.' as a universal character representation, and '-' to declare ranges of characters.
+This is a Regex Model. It has the 4 basic regex operators, along with added functionality to enhance the utility and practicality of the basic regex. Its salient aspects include a minimal use of reserved characters, whitespace insensitivity( **\\s** is how you write a space), and the ability to manipulate and declare custom character sets that make the corresponding matching process more efficient. Lastly, the regex scheme has overlap with many pre-existing regex schemes. Especially in its use of '.' as a universal character representation, and '-' to declare ranges of characters.
 
 A proper specification of the scheme is as follows: 
 
