@@ -31,11 +31,10 @@ an example would be.     **me\[t|d\]al**
 
 This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
 
-**\[A-Z\]**    specifies the set of uppercase letters. This is much easier to deal with over having to list out every character in an alternation scheme. It is also faster.
+**\[A-Z\]**    specifies the set of uppercase letters. This is much easier to deal with. Otherwise, we'd have to list out every character in an alternation scheme. It is faster for the computer as well.
 **(A|B|D|E|F|G|H|I...|Z)** vs **\[A-Z\]**
 
-Within charset mode, you can maipulate these sets using set operations.
-Operators:
+Within charset mode, you can manipulate these sets using set operations.
 
 **'~'** takes a char set and returns everything not contained within it. 
 eg:
