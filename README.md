@@ -17,7 +17,7 @@ eg:
 
 **ab?**
     matches 'a' or 'ab' - the 'b' is optional.
-Another example is colou?r, which matches 'color' or 'colour'
+Another example is **colou?r**, which matches 'color' or 'colour'
 
 **ab\*|a\*b**
     matches the sequences determined by **ab\*** or **a\*b**.
