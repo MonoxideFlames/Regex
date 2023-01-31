@@ -4,7 +4,8 @@ This is a Regex Model. It has the 4 basic regex operators, along with added func
 
 A proper specification of the scheme is as follows: 
 
-# Regex mode: This is the default mode of processing the regex. It works as most schemes work. '\*' is kleene closure, '+' is conventional closure, '?' is an optional marker, and '|' is alternation. '(', ')' are used to group subexpressions.
+# Regex mode: 
+**This is the default mode of processing the regex. It works as most schemes work. '\*' is kleene closure, '+' is conventional closure, '?' is an optional marker, and '|' is alternation. '(', ')' are used to group subexpressions.**
 
 eg:
 
@@ -30,7 +31,8 @@ a good real world example is me(t|d)al, which matches 'metal' or 'medal'.
 
 This is a basic regex specification, but it is extended to specify character sets, which makes it easier to read and match.
 
-# Character Set mode: This is enclosed between a '\[' and '\]'
+# Character Set mode: 
+**This is enclosed between a '\[' and '\]'**
 an example would be 
 
 **me\[t|d\]al**
