@@ -36,15 +36,18 @@ This matches 'metal' and 'medal' just like alternation, but it does it by using 
 
 Within charset mode, you can manipulate these sets using set operations. Here is a list of the operators:
 
-**'~'**    takes a char set and returns everything not contained within it. 
+**'~'**    takes a char set and returns everything not contained within it.
+
 eg:
-**\[~s\]**    every character in the ASCII scheme that is not an 's'.
 
-**\[~A-Z\]**    every character that is not an uppercase letter.
+**\[~s\]**    includes every character in the ASCII scheme that is not an 's'.
 
-**\[~0-9\]**    every character that is not a digit.
+**\[~A-Z\]**    includes every character that is not an uppercase letter.
+
+**\[~0-9\]**    includes every character that is not a digit.
 
 **'&'**    takes two character sets and returns their intersection
+
 eg:
 
 **\[~A-D & A-Z\]**    takes all the uppercase letters except for A,B,C,D. Since we intersect whatever isn't contained in A-D with A-Z. This effectively removes the characters {A, B, C, D} from the set of uppercase letters.
