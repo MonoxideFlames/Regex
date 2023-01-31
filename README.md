@@ -8,21 +8,21 @@ Regex mode: This is the default mode of processing the regex. It works as most s
 
 eg:
 
-(ab)+
+**(ab)+**
 
-the above expression matches all sequences of the characters 'ab' that repeat at least once.\
+the above expression matches all sequences of the characters 'ab' that repeat at least once.
 
-ab+
+**ab+
 
 The above expression matches all sequences starting with an 'a' followed by one or more 'b' characters.
 
-ab?
+**ab?
 
 The above expression matches 'a' or 'ab', the 'b' is optional.
 
 another example is colou?r, which matches 'color' or 'colour'
 
-ab\*|a\*b 
+**ab\*|a\*b 
 
 The above expression matches the sequences determined by ab\* or a\*b.
 
@@ -33,12 +33,12 @@ This is a basic regex specification, but it is extended to specify character set
 Character Set mode: This is enclosed between a '\[' and '\]'
 an example would be 
 
-me\[t|d\]al
+**me\[t|d\]al
 
 This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
 
 **\[A-Z\]** specifies the set of uppercase letters. This is much easier to deal with over having to list out every character in an alternation scheme. It is also faster.
-(A|B|D|E|F|G|H|I...|Z) vs \[A-Z\]
+**(A|B|D|E|F|G|H|I...|Z)** vs **\[A-Z\]**
 
 Within charset mode, you can maipulate these sets using set operations.
 Operators:
@@ -48,7 +48,7 @@ eg:
 **\[~A-Z\]** every character that is not an uppercase letter.
 **\[~0-9\]** every character that is not a digit.
 
-'&' takes two charsets and returns their intersection
+**'&'** takes two charsets and returns their intersection
 eg:
 **\[~A-D & A-Z\]** this takes all the uppercase letters except for A,B,C,D. Since we intersect whatever isn't contained in A-D with A-Z. This effectively removes the characters {A, B, C, D} from the set of uppercase letters.
 
@@ -80,7 +80,7 @@ A list of all the predefined character sets are shown below, these are case inse
 **D**: \[0-9\]
 **W**: \[#A|#D\]
 **X**: \[#D|a-f|A-F\]
-**P**:  !, ", #, $, %, &, ', (, ), \*, +, -, ., /, :, ;, ?, @, \[, \\, \], ^, \_, `, {, |, }, ~  and the comma itself.  note that '<=>' are not present
+**P**:  \!, \", \#, \$, \%, \&, ', (, ), \*, +, -, \., \/, :, ;, ?, @, \[, \\, \], ^, \_, \`, {, |, }, ~  and the comma itself.  note that '<=>' are not present
 **!**: an alias for P
 **E**: all characters
 **.**: an alias for E
@@ -89,7 +89,7 @@ A list of all the predefined character sets are shown below, these are case inse
 
 Real World Examples:
 
-** \[\#A|\_\]\[\#W|\_\]\*** this matches all valid variable names in C. A letter or underscore followed by either letters, numbers, underscores or nothing.
+**\[\#A|\_\]\[\#W|\_\]\*** this matches all valid variable names in C. A letter or underscore followed by either letters, numbers, underscores or nothing.
 
 **(+1)?\#D\#D\#D-?\#D\#D\#D-?\#D\#D\#D\#D?** This matches all phone numbers with or without dashes in between groups of 3 or 4 digits, and it allows an optional US country code if provided.
 
