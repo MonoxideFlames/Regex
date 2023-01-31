@@ -4,7 +4,7 @@ This is a Regex Model. It has the 4 basic regex operators, along with added func
 
 A proper specification of the scheme is as follows: 
 
-Regex mode: This is the default mode of processing the regex. It works as most schemes work. '*' is kleene closure, '+' is conventional closure, '?' is an optional marker, and '|' is alternation. '(', ')' are used to group subexpressions.
+Regex mode: This is the default mode of processing the regex. It works as most schemes work. '\*' is kleene closure, '+' is conventional closure, '?' is an optional marker, and '|' is alternation. '(', ')' are used to group subexpressions.
 eg:
 (ab)+
 the above expression matches all sequences of the characters 'ab' that repeat at least once.
@@ -13,7 +13,7 @@ The above expression matches all sequences starting with an 'a' followed by one 
 ab?
 The above expression matches 'a' or 'ab', the 'b' is optional.
 another example is colou?r, which matches 'color' or 'colour'
-ab*|a*b 
+ab\*|a\*b 
 The above expression matches the sequences determined by ab* or a*b.
 a good real world example is me(t|d)al, which matches 'metal' or 'medal'.
 
