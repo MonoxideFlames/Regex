@@ -37,7 +37,7 @@ This matches 'metal' and 'medal' just like alternation, but it does it by using 
 Within charset mode, you can maipulate these sets using set operations.
 Operators:
 
-'~' takes a char set and returns everything not contained within it. 
+**'~'** takes a char set and returns everything not contained within it. 
 eg:
 **\[~s\]**    every character in the ASCII scheme that is not an 's'.
 
