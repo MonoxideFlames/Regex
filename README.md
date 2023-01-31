@@ -27,11 +27,11 @@ A real world example would be **me(t|d)al**, which matches 'metal' or 'medal'.
 # Character Set mode: 
 **This is enclosed between a '\[' and '\]'**
 
-an example would be.     **me\[t|d\]al**
+an example would be     **me\[t|d\]al**
 
 This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
 
-**\[A-Z\]**    specifies the set of uppercase letters. Without this, we'd need to use this:    **(A|B|D|E|F|G|H|I...|Z)** vs **\[A-Z\]**
+**\[A-Z\]**    specifies the set of uppercase letters. Without this, we'd need to use this:    **(A|B|D|E|F|G|H|I...|Z)** vs which is far too difficult to read and for the computer to evaluate.
 
 Within charset mode, you can manipulate these sets using set operations.
 
