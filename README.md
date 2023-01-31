@@ -16,7 +16,7 @@ eg:
     matches all sequences starting with an 'a' followed by one or more 'b' characters.
 
 **ab?**
-    matches 'a' or 'ab', the 'b' is optional.
+    matches 'a' or 'ab' - the 'b' is optional.
 Another example is colou?r, which matches 'color' or 'colour'
 
 **ab\*|a\*b**
@@ -24,6 +24,7 @@ Another example is colou?r, which matches 'color' or 'colour'
 A real world example would be **me(t|d)al**, which matches 'metal' or 'medal'.
 
 *This is only a basic regex specification, but it is extended to specify custom character sets*
+
 # Character Set mode: 
 **This is enclosed between a '\[' and '\]'**
 
