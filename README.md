@@ -31,8 +31,7 @@ an example would be.     **me\[t|d\]al**
 
 This matches 'metal' and 'medal' just like alternation, but it does it by using a set of characters as opposed to creating alternate paths through the regex. This is useful in the following way:
 
-**\[A-Z\]**    specifies the set of uppercase letters. This is much easier to deal with. Otherwise, we'd have to list out every character in an alternation scheme. It is faster for the computer as well.
-**(A|B|D|E|F|G|H|I...|Z)** vs **\[A-Z\]**
+**\[A-Z\]**    specifies the set of uppercase letters. Without this, we'd need to use this:    **(A|B|D|E|F|G|H|I...|Z)** vs **\[A-Z\]**
 
 Within charset mode, you can manipulate these sets using set operations.
 
