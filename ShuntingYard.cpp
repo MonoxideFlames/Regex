@@ -58,7 +58,7 @@ int ShuntingYardParser::nextToken(){
 				}
 				return currentToken;
 			}
-			default: {//this is the case of an operator
+			default: {//this is the case of an operatorh
 				unsigned char precedence = properties >> 1;
 				unsigned char associativity = properties & 1;
 				
