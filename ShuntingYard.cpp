@@ -50,12 +50,12 @@ int ShuntingYardParser::nextToken(){
 				}
 				return currentToken;
 			}
-			default: {//this is the case of an operatorh
+			default: {//this is the case of an operator
 				unsigned char precedence = properties >> 1;
 				unsigned char associativity = properties & 1;
 				
-				unsigned char propertiesTop = getInformation(stack.top());//get info about the character on top.
-				if(propertiesTop == LPAREN || ((propertiesTop >> 1) < precedence)){//parentheses can be stacked upon no problem, if it has less precedence, add it.
+				unsigned char propertiesTop = getInformation(stack.top());//get info about the token on top.
+				if(propertiesTop == LPAREN || ((propertiesTop >> 1) < precedence)){//parentheses can be stacked upon. If it has less precedence, add it.
 					stack.push(currentToken);
 					currentToken = lexer.consume();
 				}
@@ -63,11 +63,13 @@ int ShuntingYardParser::nextToken(){
 					return stack.pop();//we return the operator on the stack.
 				}
 				else {
-					if(properties & 1){//right associative:
+					if(properties & 1){
+						//right associative:
 						stack.push(currentToken);
 						currentToken = lexer.consume();
 					}
 					else{
+						//left associative:
 						int token = stack.pop();
 						stack.push(currentToken);
 						currentToken = lexer.consume();
