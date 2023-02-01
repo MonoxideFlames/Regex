@@ -5,7 +5,7 @@ unsigned char ShuntingYardParser::getInformation(int token){
 	};
 	// enum {KCLOSURE = 256, CLOSURE, OPTIONAL, ALTERNATE, CONCAT, COMP, UNION, INTERSECT, RANGE, LPAREN, RPAREN};
 	if(token == STACK_BASE){
-		return LPAREN;//any operations where the stack is empty will feel like they have a ( below them, so precedence issues are not a problem. 
+		return LPAREN;//any operations where the stack is empty will feel like they have a '(' below them, so precedence issues are not a problem. 
 	}
 	else if(token < 256){
 		return END_OR_ERROR;
