@@ -115,7 +115,7 @@ The above regex matches all valid variable names in C. A letter or underscore fo
 
 The above expression matches all phone numbers with or without dashes in between groups of 3 or 4 digits, and it allows an optional US country code if provided.
 
-**(\[1-9\]|(1\[0-2\]))/(\[1-9\]|\[1|2\]#D|3\[0|1\])(/\#D?\#D?\#D\#D)?**
+**(\[1-9\]|(1\[0-2\]))/(\[1-9\]|\[1|2\]#D|3\[0|1\])(/(\#D\#D)?\#D\#D)?**
 
 The above regex matches all valid mm/dd/yyyy combinations with an optional year and support for 2 digit years as well. However, 2/30/2022 is still accepted even though that date isn't valid in reality.
 
