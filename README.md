@@ -79,7 +79,7 @@ E.g.
 
 A list of all the predefined character sets are shown below, these are preceded by a **\#** when called in the regex. The letters used to specify the charset are case insensitive. So for specifying the set of all letters, **\#A** ans **\#a** both work.
 
-**S**:    {space, tab, newLine, carraige return, vertical tab, formfeed} All whitespace characters
+**S**:    {space, tab, line feed, carraige return, vertical tab, form feed} All whitespace characters
 
 **U**:    \[A-Z\]
 
