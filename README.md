@@ -77,7 +77,7 @@ E.g.
 **\#A\[\#A|\#D\]\***    This matches a letter, followed by 0 or more characters that are either letters or numbers.
 
 
-A list of all the predefined character sets are shown below, these are preceded by a # when called in the regex. The letters used to specify the charset are case insensitive. So for specifying letters, **\#A** ans **\#a** both work.
+A list of all the predefined character sets are shown below, these are preceded by a **\#** when called in the regex. The letters used to specify the charset are case insensitive. So for specifying letters, **\#A** ans **\#a** both work.
 
 **S**:    {space, tab, newLine, carraige return, vertical tab, formfeed} All whitespace characters
 
