@@ -89,7 +89,7 @@ A list of all the predefined character sets are shown below, these are preceded 
 
 **D**:    \[0-9\]
 
-**W**:    \[#A|#D\]
+**W**:    \[#A|#D|\_\]
 
 **X**:    \[#D|a-f|A-F\]
 
