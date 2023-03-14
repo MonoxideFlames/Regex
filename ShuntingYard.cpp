@@ -1,11 +1,11 @@
 #include "ShuntingYard.hpp"
 unsigned char ShuntingYardParser::getInformation(int token){
 	static unsigned char propertiesTable[] = {
-		UNARY_POST, UNARY_POST, UNARY_POST, 10, 20, 50, 30, 40, 60, LPAREN, RPAREN
+		UNARY_POST, UNARY_POST, UNARY_POST, 20, 30, 60, 40, 50, 70, INFIX_DELIMITER, LPAREN, RPAREN 
 	};
 	// enum {KCLOSURE = 256, CLOSURE, OPTIONAL, ALTERNATE, CONCAT, COMP, UNION, INTERSECT, RANGE, LPAREN, RPAREN};
 	if(token == STACK_BASE){
-		return LPAREN;//any operations where the stack is empty will feel like they have a '(' below them, so precedence issues are not a problem. 
+		return LPAREN;//any operations where the stack is empty will feel like they have a ( below them, so precedence issues are not a problem. 
 	}
 	else if(token < 256){
 		return END_OR_ERROR;
@@ -17,24 +17,39 @@ unsigned char ShuntingYardParser::getInformation(int token){
 		return OPERAND;
 	}
 }
-int ShuntingYardParser::nextToken(){
+int ShuntingYardParser::next(){
 	while(1){
 		unsigned char properties = getInformation(currentToken);
 		switch(properties){
-			case OPERAND://either case has the same procedure.
+			case OPERAND: 
 			case UNARY_POST:{
 				int token = currentToken;
 				currentToken = lexer.consume();
 				return token;
 			}
-			case UNARY_PRE: //either case is exactly the same. Always push and get the next token
+			case UNARY_PRE: 
 			case LPAREN: {
 				stack.push(currentToken);
 				currentToken = lexer.consume();
 				break;
 			}
+			case INFIX_DELIMITER:{
+				unsigned char propertiesTop = getInformation(stack.peek());
+				if(stack.size() == 1){
+					int token = currentToken;
+					currentToken = lexer.consume();
+					return token;
+				}
+				else if(propertiesTop == LPAREN){
+					stack.pop();
+					break;
+				}
+				else{
+					return stack.pop();
+				}
+			}
 			case RPAREN: {
-				unsigned char propertiesTop = getInformation(stack.top());
+				unsigned char propertiesTop = getInformation(stack.peek());
 				if(propertiesTop == LPAREN){
 					currentToken = lexer.consume();
 					stack.pop();
@@ -45,7 +60,7 @@ int ShuntingYardParser::nextToken(){
 				}
 			}
 			case END_OR_ERROR: {
-				if(stack.top() != STACK_BASE){
+				if(stack.peek() != STACK_BASE){
 					return stack.pop();
 				}
 				return currentToken;
@@ -54,8 +69,8 @@ int ShuntingYardParser::nextToken(){
 				unsigned char precedence = properties >> 1;
 				unsigned char associativity = properties & 1;
 				
-				unsigned char propertiesTop = getInformation(stack.top());//get info about the token on top.
-				if(propertiesTop == LPAREN || ((propertiesTop >> 1) < precedence)){//parentheses can be stacked upon. If it has less precedence, add it.
+				unsigned char propertiesTop = getInformation(stack.peek());//get info about the character on top.
+				if(propertiesTop == LPAREN || (propertiesTop >> 1) < precedence){//if the top is a ( or if its of lower precedence:
 					stack.push(currentToken);
 					currentToken = lexer.consume();
 				}
@@ -63,13 +78,11 @@ int ShuntingYardParser::nextToken(){
 					return stack.pop();//we return the operator on the stack.
 				}
 				else {
-					if(properties & 1){
-						//right associative:
+					if(properties & 1){//right associative:
 						stack.push(currentToken);
 						currentToken = lexer.consume();
 					}
 					else{
-						//left associative:
 						int token = stack.pop();
 						stack.push(currentToken);
 						currentToken = lexer.consume();
