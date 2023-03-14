@@ -35,6 +35,9 @@ int Lexer::consumeRegex(){
 				return CLOSURE;
 			case '?' :
 				return OPTIONAL;
+			case ';':
+				expectingOperator = false;
+				return REGEX_SEPARATOR;
 			case '\0': {
 				current--;
 				return END;
@@ -51,8 +54,6 @@ int Lexer::consumeRegex(){
 		switch(c){
 			case '[' :{
 				state = CHARSET;
-				temp = LPAREN;
-				break;
 			}
 			case '(' :{
 				return LPAREN;
@@ -147,6 +148,10 @@ char Lexer::escapeSequence(){
 			return '\t';
 		case 'v':
 			return '\v';
+		case '^':
+			return 1; //this is the start of header ascii control char, I doubt itll be used by anything except a printer.
+		case '$':
+			return '\0';
 		default:
 			return next;   //eg \\ is backslash; and \? is question mark. It escapes the optional character postix quantifier
 	}
@@ -183,6 +188,10 @@ int Lexer::consumePredefSet(){
 		case '0':
 		case 'z':
 			return NONE;
+		case '^':
+			return ENDLINE;
+		case '$':
+			return STARTLINE;
 		default:
 			return UNEXPECTED;
 	}

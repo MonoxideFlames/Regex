@@ -6,6 +6,7 @@ class Lexer {
    int current;
    bool expectingOperator;
 	char state;
+	public:
 	enum states {
 REGEX = 0, CHARSET = 1
 	};
@@ -14,12 +15,13 @@ REGEX = 0, CHARSET = 1
 		END = 0, UNEXPECTED
 	};
 	enum ops_delim {
-		KCLOSURE = 256, CLOSURE = 257, OPTIONAL = 258, ALTERNATE = 259, CONCAT = 260, COMPLEMENT = 261, UNION = 262, INTERSECT = 263, RANGE = 264, LPAREN = 265, RPAREN = 266
+		KCLOSURE = 256, CLOSURE = 257, OPTIONAL = 258, ALTERNATE = 259, CONCAT = 260, COMPLEMENT = 261, UNION = 262, INTERSECT = 263, RANGE = 264,REGEX_SEPARATOR = 265, LPAREN = 266, RPAREN = 267
 	};	
 	enum predefCharsets {
-		ALPHA = 512, UPPER, LOWER, WHITESPACE, DIGIT, HEXDIGIT, WORD, PUNCT, ALL, NONE 
+		ALPHA = 512, UPPER, LOWER, WHITESPACE, DIGIT, HEXDIGIT, WORD, PUNCT, ALL, NONE, STARTLINE, ENDLINE
 	};
 	//any literal char is represented by 768 + its ascii value.
+private:
 	int consumeRegex();
 	int consumeSet();
 	char escapeSequence();
