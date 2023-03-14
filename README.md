@@ -125,6 +125,6 @@ This matches a word, which is a set of one or more alphanumeric characters.
 
 # A few extra details: 
 
-Any and all reserved characters can be escaped using \c where 'c' is the character to be escaped. \\ escapes itself. A few reserved sequences are \ followed by {n, t, s, v, f, r} which correspond to {newLine, tab, space, vertical tab, form feed, carraige return}
+Any and all reserved characters can be escaped using \c where 'c' is the character to be escaped. \\ escapes itself. A few reserved sequences are \ followed by {n, t, s, v, f, r} which correspond to {line feed, tab, space, vertical tab, form feed, carraige return}
 
 This scheme only matches regular languages. It does not have a way to compute backreferences or backtrack through the regex.
