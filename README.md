@@ -107,7 +107,7 @@ A list of all the predefined character sets are shown below, these are preceded 
 
 **Real World Examples:**
 
-**\[\#A|\_\]\[\#W|\_\]\*** 
+**\[\#A|\_\]\#W\*** 
 
 The above regex matches all valid variable names in C. A letter or underscore followed by either letters, numbers, underscores or nothing.
 
