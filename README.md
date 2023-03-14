@@ -23,7 +23,7 @@ Another example is **colou?r**, which matches 'color' or 'colour'
     matches the sequences determined by **ab\*** or **a\*b**.
 A real world example would be **me(t|d)al**, which matches 'metal' or 'medal'.
 
-*This is only a basic regex specification, but it is extended to specify custom character sets*
+*So far we have only covered a basic regex specification, but the specification is extended to specify custom character sets*
 
 # Character Set mode: 
 **This is enclosed between a '\[' and '\]'**
@@ -70,14 +70,14 @@ Declaring basic charsets - 3 ways:
 
 3) Use predefined macros:
 
-**\#D**    represents digits, #A represents alphabetical characters, #! represents all punctuation characters, etc.
+**\#D**    represents digits, **\#A** represents alphabetical characters, **\#!** represents all punctuation characters, etc.
 
-example:
+E.g.
 
 **\#A\[\#A|\#D\]\***    This matches a letter, followed by 0 or more characters that are either letters or numbers.
 
 
-A list of all the predefined character sets are shown below, these are case insensitive:
+A list of all the predefined character sets are shown below, these are preceded by a # when called in the regex. The letters used to specify the charset are case insensitive. So for specifying letters, **\#A** ans **\#a** both work.
 
 **S**:    {space, tab, newLine, carraige return, vertical tab, formfeed} All whitespace characters
 
